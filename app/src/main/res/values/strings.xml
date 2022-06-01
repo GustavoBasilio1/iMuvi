@@ -4,6 +4,11 @@
     <string name="button_luck">Luck</string>
     <string name="button_map">Map</string>
     <string name="button_bests">Bests</string>
-    <string name="button_logo">logo</string>
+    <string name="logo">logo</string>
+    <string name="txt_search">Search Movie</string>
+    <string name="txt_bests">Bests Movies</string>
+    <string name="txt_map">Map</string>
+    <string name="txt_luck">Luck</string>
+    <string name="scroll">ScrollSearch</string>
 
 </resources>

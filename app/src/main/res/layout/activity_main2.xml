@@ -8,7 +8,7 @@
     tools:context=".Main2Activity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imglogohome"
         android:layout_width="131dp"
         android:layout_height="166dp"
         android:layout_alignParentStart="true"
@@ -16,15 +16,18 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="52dp"
+        android:contentDescription="@string/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logotextoabaixo" />
 
     <ImageButton
+        android:id="@+id/btn_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
+        android:contentDescription="@string/button_search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"
@@ -34,10 +37,11 @@
         app:srcCompat="@drawable/search" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btn_bests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
+        android:contentDescription="@string/button_bests"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
@@ -47,37 +51,41 @@
         app:srcCompat="@drawable/bests" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/btn_luck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
+        android:contentDescription="@string/button_luck"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.832"
-        app:srcCompat="@drawable/luck" />
+        app:srcCompat="@drawable/luck"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/btn_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00FFFFFF"
+        android:contentDescription="@string/button_map"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.832"
-        app:srcCompat="@drawable/ping" />
+        app:srcCompat="@drawable/ping"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"
-        android:contentDescription="@string/button_search"
+        android:contentDescription="@string/txt_search"
         android:fontFamily="@font/inder"
         android:foregroundTint="#FFFFFF"
         android:text="@string/button_search"
@@ -95,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"
-        android:contentDescription="@string/button_search"
+        android:contentDescription="@string/txt_map"
         android:fontFamily="@font/inder"
         android:foregroundTint="#FFFFFF"
         android:text="@string/button_map"
@@ -113,7 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"
-        android:contentDescription="@string/button_search"
+        android:contentDescription="@string/txt_bests"
         android:fontFamily="@font/inder"
         android:foregroundTint="#FFFFFF"
         android:text="@string/button_bests"
@@ -131,10 +139,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"
-        android:contentDescription="@string/button_search"
+        android:contentDescription="@string/txt_luck"
         android:fontFamily="@font/inder"
         android:foregroundTint="#FFFFFF"
-        android:text="@string/button_luck"
+        android:text="@string/txt_luck"
         android:textColor="@color/white"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
