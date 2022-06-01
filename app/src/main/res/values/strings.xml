@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">iMuvi</string>
+    <string name="button_search">Search</string>
+    <string name="button_luck">Luck</string>
+    <string name="button_map">Map</string>
+    <string name="button_bests">Bests</string>
+    <string name="button_logo">logo</string>
+
+</resources>
