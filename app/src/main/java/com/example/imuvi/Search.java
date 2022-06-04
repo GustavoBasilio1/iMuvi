@@ -40,7 +40,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
 
     public void buscaLivros(View view) {
         // Recupera a string de busca.
-        String queryString = textTitulo.getText().toString();
+        String queryString = editSearch.getText().toString();
         // esconde o teclado qdo o botão é clicado
         InputMethodManager inputManager = (InputMethodManager)
                 getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -92,7 +92,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
             // Converte a resposta em Json
             JSONObject jsonObject = new JSONObject(data);
             // Obtem o JSONArray dos itens de livros
-            JSONArray itemsArray = jsonObject.getJSONArray("Ratings");
+            JSONArray itemsArray = jsonObject.getJSONArray("object");
             // inicializa o contador
             int i = 0;
             String titulo = null;
@@ -102,13 +102,12 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
                     (ano == null && titulo == null)) {
                 // Obtem a informação
                 JSONObject book = itemsArray.getJSONObject(i);
-                JSONObject source = book.getJSONObject("Source");
-                JSONObject value = book.getJSONObject("Value");
+                JSONObject value = book.getJSONObject("object");
                 //  Obter autor e titulo para o item,
                 // erro se o campo estiver vazio
                 try {
-                    titulo = source.getString("Source");
-                    ano = value.getString("Value");
+                    titulo = value.getString("Title");
+                    ano = value.getString("Year");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
