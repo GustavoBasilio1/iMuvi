@@ -12,4 +12,6 @@
     <string name="scroll">ScrollSearch</string>
     <string name="searchview">Search a movie</string>
     <string name="searchtext">Please, search a movie</string>
+    <string name="searchbutton">Search</string>
+
 </resources>
