@@ -23,7 +23,7 @@
         app:srcCompat="@drawable/logotextoabaixo" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/txt_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
@@ -39,18 +39,20 @@
         app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.306"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="130dp"
         android:layout_height="50dp"
         android:fontFamily="@font/inder"
+        android:onClick="buscaLivros"
         android:text="@string/searchbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toEndOf="@+id/txt_search"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.299" />
 
@@ -63,13 +65,13 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/txt_titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/txt_ano"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp" />
