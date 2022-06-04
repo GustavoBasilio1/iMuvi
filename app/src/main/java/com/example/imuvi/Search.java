@@ -92,7 +92,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
             // Converte a resposta em Json
             JSONObject jsonObject = new JSONObject(data);
             // Obtem o JSONArray dos itens de livros
-            JSONArray itemsArray = jsonObject.getJSONArray("object");
+            JSONArray itemsArray = jsonObject.getJSONArray("Ratings");
             // inicializa o contador
             int i = 0;
             String titulo = null;
@@ -102,12 +102,13 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
                     (ano == null && titulo == null)) {
                 // Obtem a informação
                 JSONObject book = itemsArray.getJSONObject(i);
-
+                JSONObject source = book.getJSONObject("Source");
+                JSONObject value = book.getJSONObject("Value");
                 //  Obter autor e titulo para o item,
                 // erro se o campo estiver vazio
                 try {
-                    titulo = book.getString("Title");
-                    ano = book.getString("Year");
+                    titulo = source.getString("Source");
+                    ano = value.getString("Value");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
