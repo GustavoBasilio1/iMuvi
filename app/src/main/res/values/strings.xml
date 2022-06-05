@@ -26,5 +26,6 @@
     <string name="textend">Click the button below to view your current location</string>
     <string name="btnbuscar">LOOK</string>
     <string name="contentbuscar">YOUR LOCALIZATION</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 </resources>
