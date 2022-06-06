@@ -17,10 +17,10 @@ public class NetworkUtils {
     private static final String FILMES_URL = "http://www.omdbapi.com/?apikey=7efb88e9&";
     // Parametros da string de Busca
     private static final String QUERY_PARAM = "t";
-    /*// Limitador da qtde de resultados
+    // Limitador da qtde de resultados
     private static final String MAX_RESULTS = "maxResults";
     // Parametro do tipo de impressão
-    private static final String TIPO_IMPRESSAO = "printType"; */
+    private static final String TIPO_IMPRESSAO = "printType";
 
     static String buscaInfosFilme(String queryString) {
         HttpURLConnection urlConnection = null;
@@ -30,6 +30,8 @@ public class NetworkUtils {
             // Construção da URI de Busca
             Uri builtURI = Uri.parse(FILMES_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, queryString)
+                    .appendQueryParameter(MAX_RESULTS, "10")
+                    .appendQueryParameter(TIPO_IMPRESSAO, "movie")
                     .build();
             // Converte a URI para a URL.
             URL requestURL = new URL(builtURI.toString());
