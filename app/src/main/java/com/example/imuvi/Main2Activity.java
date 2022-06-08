@@ -33,7 +33,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent user = new Intent(getApplicationContext(), MapsActivity.class);
+                Intent user = new Intent(getApplicationContext(), EnderecoActivity.class);
                 startActivity(user);
             }
         });

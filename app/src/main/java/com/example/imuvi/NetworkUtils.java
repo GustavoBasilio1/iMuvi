@@ -12,15 +12,14 @@ import java.net.URL;
 
 public class NetworkUtils {
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
-    // Constantes utilizadas pela API
-    // URL para a API de Livros do Google.
-    private static final String FILMES_URL = "http://www.omdbapi.com/?apikey=7efb88e9&";
-    // Parametros da string de Busca
+
+    private static final String FILMES_URL = "https://www.omdbapi.com/?apikey=7efb88e9&";
+
     private static final String QUERY_PARAM = "t";
-    // Limitador da qtde de resultados
-    private static final String MAX_RESULTS = "maxResults";
-    // Parametro do tipo de impressão
-    private static final String TIPO_IMPRESSAO = "printType";
+
+
+
+    private static final String TIPO_FILME = "type";
 
     static String buscaInfosFilme(String queryString) {
         HttpURLConnection urlConnection = null;
@@ -30,8 +29,7 @@ public class NetworkUtils {
             // Construção da URI de Busca
             Uri builtURI = Uri.parse(FILMES_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, queryString)
-                    .appendQueryParameter(MAX_RESULTS, "10")
-                    .appendQueryParameter(TIPO_IMPRESSAO, "movie")
+                    .appendQueryParameter(TIPO_FILME, "movie")
                     .build();
             // Converte a URI para a URL.
             URL requestURL = new URL(builtURI.toString());

@@ -9,10 +9,12 @@ import androidx.loader.content.Loader;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -23,6 +25,9 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
     private EditText editSearch;
     private TextView textTitulo;
     private TextView textYear;
+    private ImageView imagePoster;
+    private TextView textSource;
+    private TextView textValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,9 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
         editSearch = findViewById(R.id.txt_search);
         textTitulo = findViewById(R.id.txt_titulo);
         textYear = findViewById(R.id.txt_ano);
+        imagePoster = findViewById(R.id.imgPoster);
+        textSource = findViewById(R.id.txt_source);
+        textValue = findViewById(R.id.txt_value);
 
         if (getSupportLoaderManager().getLoader(0) != null) {
             getSupportLoaderManager().initLoader(0, null, this);
@@ -91,22 +99,25 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
         try {
             // Converte a resposta em Json
             JSONObject jsonObject = new JSONObject(data);
+            String titulo = jsonObject.getString("Title");
+            String ano = jsonObject.getString("Year");
+            String poster = jsonObject.getString("Poster");
+
             // Obtem o JSONArray dos itens de livros
             JSONArray itemsArray = jsonObject.getJSONArray("Ratings");
             // inicializa o contador
             int i = 0;
-            String titulo = null;
-            String ano = null;
+            String source = null;
+            String value = null;
             // Procura pro resultados nos itens do array
             while (i < itemsArray.length() &&
-                    (ano == null && titulo == null)) {
+                    (source == null && value == null)) {
                 // Obtem a informação
                 JSONObject movie= itemsArray.getJSONObject(i);
-                //  Obter autor e titulo para o item,
-                // erro se o campo estiver vazio
+
                 try {
-                    titulo = movie.getString("Source");
-                    ano = movie.getString("Value");
+                    source = movie.getString("Source");
+                    value = movie.getString("Value");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -114,19 +125,26 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
                 i++;
             }
             //mostra o resultado qdo possivel.
-            if (titulo != null && ano != null) {
-                textTitulo.setText(titulo);
-                textYear.setText(ano);
+            if (titulo != null && ano != null && source != null && value != null) {
+                textTitulo.setText("Título: " + titulo);
+                textYear.setText("Ano: " + ano);
+                imagePoster.setImageURI(Uri.parse(poster));
+                textSource.setText("Fonte: "+ source);
+                textValue.setText("Nota: " + value);
                 //nmLivro.setText(R.string.str_empty);
             } else {
                 // If none are found, update the UI to show failed results.
                 textTitulo.setText(R.string.no_results);
                 textYear.setText(R.string.str_empty);
+                textSource.setText(R.string.str_empty);
+                textValue.setText(R.string.str_empty);
             }
         } catch (Exception e) {
             // Se não receber um JSOn valido, informa ao usuário
             textTitulo.setText(R.string.no_results);
             textYear.setText(R.string.str_empty);
+            textSource.setText(R.string.str_empty);
+            textValue.setText(R.string.str_empty);
             e.printStackTrace();
         }
     }
