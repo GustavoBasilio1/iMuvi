@@ -14,6 +14,8 @@
     <string name="searchtext">Please, search a movie</string>
     <string name="searchbutton">Search</string>
     <string name="loading">Carregando…</string>
+    <string name="wellcome">Welcome to iMuvi!!</string>
+    <string name="bannerhome">Banner of the Home</string>
 
     <string name="no_results">"Nenhum resultado encontrado"</string>
 
