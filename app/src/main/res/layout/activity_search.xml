@@ -8,121 +8,239 @@
     tools:context=".Search">
 
     <ImageView
-        android:id="@+id/imglogosearch"
-        android:layout_width="93dp"
-        android:layout_height="121dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="44dp"
-        android:contentDescription="@string/logo"
+        android:id="@+id/imageView2"
+        android:layout_width="416dp"
+        android:layout_height="491dp"
+        android:scaleType="fitEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_search"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logotextoabaixo" />
+        app:srcCompat="@drawable/keanu" />
 
     <EditText
         android:id="@+id/txt_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:autofillHints=""
         android:backgroundTint="@color/white"
         android:ems="10"
         android:fontFamily="@font/inder"
         android:hint="@string/searchtext"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="130dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
         android:background="@color/vinho"
         android:fontFamily="@font/inder"
         android:onClick="buscaLivros"
         android:text="@string/searchbutton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toEndOf="@+id/txt_search"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.299" />
-
-    <ImageView
-        android:id="@+id/imgPoster"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.764"
-        app:srcCompat="@drawable/poster" />
-
-    <ScrollView
-        android:layout_width="211dp"
-        android:layout_height="461dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imgPoster"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_search"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="463dp"
+        android:layout_marginTop="272dp"
+        android:backgroundTint="@color/vinho"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txt_titulo"
-                android:layout_width="205dp"
-                android:layout_height="50dp"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txt_ano"
-                android:layout_width="205dp"
-                android:layout_height="28dp"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_titulo" />
+                <TextView
+                    android:id="@+id/txt_titulo"
+                    android:layout_width="205dp"
+                    android:layout_height="55dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/txt_source"
-                android:layout_width="205dp"
-                android:layout_height="50dp"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_ano" />
+                <TextView
+                    android:id="@+id/txt_ano"
+                    android:layout_width="205dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/txt_value"
-                android:layout_width="205dp"
-                android:layout_height="28dp"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_source" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_source"
+                    android:layout_width="205dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txt_value"
+                    android:layout_width="205dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_rated"
+                    android:layout_width="205dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txt_released"
+                    android:layout_width="205dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_runtime"
+                    android:layout_width="205dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txt_genre"
+                    android:layout_width="205dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_director"
+                    android:layout_width="205dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txt_writer"
+                    android:layout_width="205dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_plot"
+                    android:layout_width="205dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txt_actors"
+                    android:layout_width="205dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_language"
+                    android:layout_width="205dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txt_country"
+                    android:layout_width="205dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_awards"
+                    android:layout_width="205dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 

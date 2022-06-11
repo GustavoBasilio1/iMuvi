@@ -7,15 +7,22 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 
 import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,25 +32,96 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
     private EditText editSearch;
     private TextView textTitulo;
     private TextView textYear;
-    private ImageView imagePoster;
+    //private ImageView imagePoster;
     private TextView textSource;
     private TextView textValue;
+    private TextView textRated;
+    private TextView textReleased;
+    private TextView textRuntime;
+    private TextView textGenre;
+    private TextView textDirector;
+    private TextView textWriters;
+    private TextView textActors;
+    private TextView textPlot;
+    private TextView textLanguage;
+    private TextView textCountry;
+    private TextView textAwards;
+    SensorManager sensorManager;
+    Sensor sensor;
+    SensorEventListener sensorEventListener;
+    int mov = 0;
+    Vibrator vibrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         getSupportActionBar().hide();
-        editSearch = findViewById(R.id.txt_search);
-        textTitulo = findViewById(R.id.txt_titulo);
-        textYear = findViewById(R.id.txt_ano);
-        imagePoster = findViewById(R.id.imgPoster);
-        textSource = findViewById(R.id.txt_source);
-        textValue = findViewById(R.id.txt_value);
+
+        //adicionando o sensor
+        sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        if(sensor == null)
+            finish();
+        vibrar = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        sensorEventListener = new SensorEventListener(){
+            @Override
+            public void onSensorChanged(SensorEvent sensorevent) {
+                float x = sensorevent.values[0];
+                float y = sensorevent.values[1];
+                float z = sensorevent.values[2];
+                System.out.println("Valor GiroX" + x);
+                if(x<-5 && mov == 0) {
+                    vibrar.vibrate(100);
+                    Toast.makeText(Search.this, "This app does not support landscape mode", Toast.LENGTH_SHORT).show();
+                    mov++;
+                } else if(x>-5 && mov == 1) {
+                    vibrar.vibrate(100);
+                    Toast.makeText(Search.this, "This app does not support landscape mode", Toast.LENGTH_SHORT).show();
+                    mov++;
+
+                }
+
+                if(mov == 2) {
+                    vibrar.vibrate(100);
+                    Toast.makeText(Search.this, "This app does not support landscape mode", Toast.LENGTH_SHORT).show();
+                    mov = 0;
+                }
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+            }
+
+
+        };
+        Start();
+
+        FindComponents();
 
         if (getSupportLoaderManager().getLoader(0) != null) {
             getSupportLoaderManager().initLoader(0, null, this);
         }
+    }
+
+    //MÉTODOS DO ACELEROMETRO
+    private void Start() {
+        sensorManager.registerListener(sensorEventListener,sensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    private void Stop() { sensorManager.unregisterListener(sensorEventListener); }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Stop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Start();
     }
 
     public void buscaLivros(View view) {
@@ -102,8 +180,19 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
             String titulo = jsonObject.getString("Title");
             String ano = jsonObject.getString("Year");
             String poster = jsonObject.getString("Poster");
+            String rated = jsonObject.getString("Rated");
+            String released = jsonObject.getString("Released");
+            String runtime = jsonObject.getString("Runtime");
+            String genre = jsonObject.getString("Genre");
+            String director = jsonObject.getString("Director");
+            String writers = jsonObject.getString("Writer");
+            String actors = jsonObject.getString("Actors");
+            String plot = jsonObject.getString("Plot");
+            String language = jsonObject.getString("Language");
+            String country = jsonObject.getString("Country");
+            String awards = jsonObject.getString("Awards");
 
-            // Obtem o JSONArray dos itens de livros
+            // Obtem o JSONArray das notas
             JSONArray itemsArray = jsonObject.getJSONArray("Ratings");
             // inicializa o contador
             int i = 0;
@@ -125,31 +214,92 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
                 i++;
             }
             //mostra o resultado qdo possivel.
-            if (titulo != null && ano != null && source != null && value != null) {
-                textTitulo.setText("Título: " + titulo);
-                textYear.setText("Ano: " + ano);
-                imagePoster.setImageURI(Uri.parse(poster));
-                textSource.setText("Fonte: "+ source);
-                textValue.setText("Nota: " + value);
-                //nmLivro.setText(R.string.str_empty);
+            if (titulo != null && ano != null && source != null && value != null
+                && rated != null && released != null && runtime != null && genre != null
+                && director != null && writers != null && actors != null && plot != null
+                && language != null && country != null && awards != null && source != null
+                && value != null
+            ) {
+                textTitulo.setText("Title: " + titulo);
+                textYear.setText("Year: " + ano);
+                //imagePoster.setImageURI(Uri.parse(poster));
+                textSource.setText("Source: "+ source);
+                textValue.setText("Value: " + value);
+                textRated.setText("Rated: " + rated);
+                textReleased.setText("Released: " + released);
+                textRuntime.setText("Runtime: " + runtime);
+                textGenre.setText("Genre: " + genre);
+                textDirector.setText("Director: " + director);
+                textWriters.setText("Writers: " + writers);
+                textActors.setText("Actors: " + actors);
+                textPlot.setText("Plot: " + plot);
+                textLanguage.setText("Language: " + language);
+                textCountry.setText("Country: " + country);
+                textAwards.setText("Awards: " + awards);
+
+
             } else {
                 // If none are found, update the UI to show failed results.
                 textTitulo.setText(R.string.no_results);
                 textYear.setText(R.string.str_empty);
                 textSource.setText(R.string.str_empty);
                 textValue.setText(R.string.str_empty);
+                textRated.setText(R.string.str_empty);
+                textReleased.setText(R.string.str_empty);
+                textRuntime.setText(R.string.str_empty);
+                textGenre.setText(R.string.str_empty);
+                textDirector.setText(R.string.str_empty);
+                textWriters.setText(R.string.str_empty);
+                textActors.setText(R.string.str_empty);
+                textPlot.setText(R.string.str_empty);
+                textLanguage.setText(R.string.str_empty);
+                textCountry.setText(R.string.str_empty);
+                textAwards.setText(R.string.str_empty);
             }
         } catch (Exception e) {
-            // Se não receber um JSOn valido, informa ao usuário
+            // Se não receber um JSOn válido, informa ao usuário
             textTitulo.setText(R.string.no_results);
             textYear.setText(R.string.str_empty);
             textSource.setText(R.string.str_empty);
             textValue.setText(R.string.str_empty);
+            textRated.setText(R.string.str_empty);
+            textReleased.setText(R.string.str_empty);
+            textRuntime.setText(R.string.str_empty);
+            textGenre.setText(R.string.str_empty);
+            textDirector.setText(R.string.str_empty);
+            textWriters.setText(R.string.str_empty);
+            textActors.setText(R.string.str_empty);
+            textPlot.setText(R.string.str_empty);
+            textLanguage.setText(R.string.str_empty);
+            textCountry.setText(R.string.str_empty);
+            textAwards.setText(R.string.str_empty);
             e.printStackTrace();
         }
     }
     @Override
     public void onLoaderReset(@NonNull Loader<String> loader) {
         // obrigatório implementar, nenhuma ação executada
+    }
+
+    private void FindComponents(){
+        editSearch = findViewById(R.id.txt_search);
+        textTitulo = findViewById(R.id.txt_titulo);
+        textYear = findViewById(R.id.txt_ano);
+        //imagePoster = findViewById(R.id.imgPoster);
+        textSource = findViewById(R.id.txt_source);
+        textValue = findViewById(R.id.txt_value);
+        textRated = findViewById(R.id.txt_rated);
+        textReleased = findViewById(R.id.txt_released);
+        textRuntime = findViewById(R.id.txt_runtime);
+        textGenre = findViewById(R.id.txt_genre);
+        textDirector = findViewById(R.id.txt_director);
+        textWriters = findViewById(R.id.txt_writer);
+        textActors = findViewById(R.id.txt_actors);
+        textPlot = findViewById(R.id.txt_plot);
+        textLanguage = findViewById(R.id.txt_language);
+        textCountry = findViewById(R.id.txt_country);
+        textAwards = findViewById(R.id.txt_awards);
+
+
     }
 }
