@@ -16,6 +16,7 @@ public class Movie {
     String language;
     String country;
     String awards;
+    String poster;
     String metascore;
     String imdbrating;
     String imdbvotes;
@@ -24,14 +25,40 @@ public class Movie {
     String boxoffice;
     String production;
     String website;
+    String totalseasons;
 
-    //RATINGS
-    String source;
-    String value;
 
-    public Movie(String idImdb, String titleMovie){
+
+    public Movie(String idImdb, String titleMovie, String yearMovie, String ratedMovie, String releasedMovie,
+                 String runtimeMovie, String genreMovie, String directorMovie, String writerMovie, String actorsMovie,
+                 String plotMovie, String languageMovie, String countryMovie, String awardsMovie, String posterMovie,
+                 String metascoreMovie, String imdbratingMovie, String imdbvotesMovie, String typeMovie, String dvdMovie,
+                 String boxofficeMovie, String productionMovie, String websiteMovie, String totalseasonsMovie){
+
         this.imdbId = idImdb;
         this.title = titleMovie;
+        this.year = yearMovie;
+        this.rated = ratedMovie;
+        this.released = releasedMovie;
+        this.runtime = runtimeMovie;
+        this.genre = genreMovie;
+        this.director = directorMovie;
+        this.writer = writerMovie;
+        this.actors = actorsMovie;
+        this.plot = plotMovie;
+        this.language = languageMovie;
+        this.country = countryMovie;
+        this.awards = awardsMovie;
+        this.poster = posterMovie;
+        this.metascore = metascoreMovie;
+        this.imdbrating = imdbratingMovie;
+        this.imdbvotes = imdbvotesMovie;
+        this.type = typeMovie;
+        this.dvd = dvdMovie;
+        this.boxoffice = boxofficeMovie;
+        this.production = productionMovie;
+        this.website = websiteMovie;
+        this.totalseasons = totalseasonsMovie;
     }
 
     public Movie(){
@@ -106,6 +133,16 @@ public class Movie {
 
     public void setAwards(String awards) {
         this.awards = awards;
+    }
+    //
+
+    //POSTER
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
     //
 
@@ -230,15 +267,7 @@ public class Movie {
     }
     //
 
-    //SOURCE
-    public String getSource() {
-        return source;
-    }
 
-    public void setSource(String source) {
-        this.source = source;
-    }
-    //
 
     //TYPE
     public String getType() {
@@ -250,16 +279,7 @@ public class Movie {
     }
     //
 
-    //VALUE
-    public String getValue() {
-        return value;
-    }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    //
 
     //WEBSITE
     public String getWebsite() {
@@ -283,5 +303,16 @@ public class Movie {
 
     //
 
+    //TOTALSEASONS
+
+    public String getTotalseasons() {
+        return totalseasons;
+    }
+
+    public void setTotalseasons(String totalseasons) {
+        this.totalseasons = totalseasons;
+    }
+
+    //
 
 }
