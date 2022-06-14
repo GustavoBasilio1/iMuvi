@@ -43,6 +43,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
     Vibrator vibrar;
 
     Movie movie = new Movie();
+    Ratings ratings = new Ratings();
     DBHelper db = new DBHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +117,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
         Start();
     }
 
-    public void buscaLivros(View view) {
+    public void buscaFilmes(View view) {
         // Recupera a string de busca.
         String queryString = editSearch.getText().toString();
         // esconde o teclado qdo o botão é clicado
@@ -216,37 +217,124 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
                 i++;
             }
             //mostra o resultado qdo possivel.
-            if (titulo != null && ano != null)
+            if (titulo != null)
             {
+
+                //SETANDO OS ITENS NA CLASSE MOVIE
                 movie.setImdbId(imdbId);
+                movie.setTitle(titulo);
+                movie.setYear(ano);
+                movie.setRated(rated);
+                movie.setReleased(released);
+                movie.setRuntime(runtime);
+                movie.setGenre(genre);
+                movie.setDirector(director);
+                movie.setWriter(writers);
+                movie.setActors(actors);
+                movie.setPlot(plot);
+                movie.setLanguage(language);
+                movie.setCountry(country);
+                movie.setAwards(awards);
+                movie.setPoster(poster);
+                movie.setMetascore(metascore);
+                movie.setImdbrating(imdbRating);
+                movie.setImdbvotes(imdbVotes);
+                movie.setType(type);
+                movie.setDvd(dvd);
+                movie.setBoxoffice(boxOffice);
+                movie.setProduction(production);
+                movie.setWebsite(website);
+                movie.setTotalseasons(totalseasons);
 
-                textTitulo.setText("Title: " + titulo);
-                textYear.setText("Year: " + ano);
-                //imagePoster.setImageURI(Uri.parse(poster));
-                textSource.setText("Source: " + source);
-                textValue.setText("Value: " + value);
-                textRated.setText("Rated: " + rated);
-                textReleased.setText("Released: " + released);
-                textRuntime.setText("Runtime: " + runtime);
-                textGenre.setText("Genre: " + genre);
-                textDirector.setText("Director: " + director);
-                textWriters.setText("Writers: " + writers);
-                textActors.setText("Actors: " + actors);
-                textPlot.setText("Plot: " + plot);
-                textLanguage.setText("Language: " + language);
-                textCountry.setText("Country: " + country);
-                textAwards.setText("Awards: " + awards);
+                Movie movie = db.buscaMovie(imdbId);
 
-                textMetascore.setText("Metascore: " + metascore);
-                textImdbId.setText("Imdb ID: " + imdbId);
-                textImdbRating.setText("Imdb Rating: " + imdbRating);
-                textImdbVotes.setText("Imdb Votes: " + imdbVotes);
-                textType.setText("Type: " + type);
-                textDvd.setText("DVD: " + dvd);
-                textboxOffice.setText("BoxOffice: " + boxOffice);
-                textproduction.setText("Production: " + production);
-                textwebsite.setText("Website: " + website);
-                textTotalSeasons.setText("Total Seasons: " + totalseasons);
+                //se o id do filme não existir no banco, é inserido nele
+                if (movie.getImdbId().equals("notExists")) {
+                    //inserindo os campos no banco
+                    movie.setImdbId(imdbId);
+                    movie.setTitle(titulo);
+                    movie.setYear(ano);
+                    movie.setRated(rated);
+                    movie.setReleased(released);
+                    movie.setRuntime(runtime);
+                    movie.setGenre(genre);
+                    movie.setDirector(director);
+                    movie.setWriter(writers);
+                    movie.setActors(actors);
+                    movie.setPlot(plot);
+                    movie.setLanguage(language);
+                    movie.setCountry(country);
+                    movie.setAwards(awards);
+                    movie.setPoster(poster);
+                    movie.setMetascore(metascore);
+                    movie.setImdbrating(imdbRating);
+                    movie.setImdbvotes(imdbVotes);
+                    movie.setType(type);
+                    movie.setDvd(dvd);
+                    movie.setBoxoffice(boxOffice);
+                    movie.setProduction(production);
+                    movie.setWebsite(website);
+                    movie.setTotalseasons(totalseasons);
+                    db.addMovie(movie);
+
+                    Toast.makeText(getApplicationContext(),"ainda não cadastrado", Toast.LENGTH_SHORT).show();
+
+                }
+
+                else {
+                    textTitulo.setText(movie.getTitle());
+                    textYear.setText(movie.getYear());
+                    //imagePoster.setImageURI(Uri.parse(poster));
+
+                    textRated.setText(movie.getRated());
+                    textReleased.setText(movie.getReleased());
+                    textRuntime.setText(movie.getRuntime());
+                    textGenre.setText(movie.getGenre());
+                    textDirector.setText(movie.getDirector());
+                    textWriters.setText(movie.getWriter());
+                    textActors.setText(movie.getActors());
+                    textPlot.setText(movie.getPlot());
+                    textLanguage.setText(movie.getLanguage());
+                    textCountry.setText(movie.getCountry());
+                    textAwards.setText(movie.getAwards());
+
+                    textMetascore.setText(movie.getMetascore());
+                    textImdbId.setText(movie.getImdbId());
+                    textImdbRating.setText(movie.getImdbrating());
+                    textImdbVotes.setText(movie.getImdbvotes());
+                    textType.setText(movie.getType());
+                    textDvd.setText(movie.getDvd());
+                    textboxOffice.setText(movie.getBoxoffice());
+                    textproduction.setText(movie.getProduction());
+                    textwebsite.setText(movie.getWebsite());
+                    textTotalSeasons.setText(movie.getTotalseasons());
+                    Toast.makeText(getApplicationContext(),"ja existe", Toast.LENGTH_SHORT).show();
+                }
+
+                //SETANDO OS ITENS NA CLASSE RATINGS
+
+                ratings.setIdimdbr(imdbId);
+                ratings.setSource(source);
+                ratings.setValue(value);
+                Ratings ratings = db.buscaRatings(imdbId);
+
+                //se não existir no banco cadastra
+                if (ratings.getIdimdbr().equals("notExists")) {
+                    //insert
+                    ratings.setIdimdbr(imdbId);
+                    ratings.setSource(source);
+                    ratings.setValue(value);
+                    db.addRatings(ratings);
+                    
+
+                }
+                //se ja existir abre a outra tela direto
+                else {
+                    textSource.setText(ratings.getSource());
+                    textValue.setText(ratings.getValue());
+                }
+
+
 
             } else {
                 // If none are found, update the UI to show failed results.

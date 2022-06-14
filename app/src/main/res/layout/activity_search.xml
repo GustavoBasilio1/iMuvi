@@ -46,7 +46,7 @@
         android:layout_height="49dp"
         android:background="@color/vinho"
         android:fontFamily="@font/inder"
-        android:onClick="buscaLivros"
+        android:onClick="buscaFilmes"
         android:text="@string/searchbutton"
         android:textColor="@color/white"
         android:textSize="25sp"
