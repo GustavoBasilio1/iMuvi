@@ -29,4 +29,7 @@
     <string name="contentbuscar">YOUR LOCALIZATION</string>
     <string name="title_activity_maps">MapsActivity</string>
 
+    <!--WIDGET-->
+    <string name="widgettext">iMuvi search screen</string>
+
 </resources>
