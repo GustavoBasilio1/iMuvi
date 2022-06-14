@@ -59,7 +59,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //nome e versão do db
     private static final String DB_NAME="DBIMuvi.db";
-    private static final int DB_VERSAO = 2;
+    private static final int DB_VERSAO = 3;
 
     public DBHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSAO);
@@ -111,9 +111,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        String drop_table_movie = "DROP TABLE IF EXISTS " + MOVIE_TABLE_NAME;
-        String drop_table_ratings = "DROP TABLE IF EXISTS " + RATINGS_TABLE_NAME;
-        String drop_table_bests = "DROP TABLE IF EXISTS " + BESTFILM_TABLE_NAME;
+        String drop_table_movie = "DROP TABLE IF EXISTS " + MOVIE_TABLE_NAME + ";";
+        String drop_table_ratings = "DROP TABLE IF EXISTS " + RATINGS_TABLE_NAME + ";";
+        String drop_table_bests = "DROP TABLE IF EXISTS " + BESTFILM_TABLE_NAME + ";";
 
         db.execSQL(drop_table_bests);
         db.execSQL(drop_table_ratings);
