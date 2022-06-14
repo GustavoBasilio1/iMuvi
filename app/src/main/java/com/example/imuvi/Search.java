@@ -32,8 +32,8 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
     private EditText editSearch;
     private TextView textTitulo, textYear, textSource, textValue, textRated, textReleased, textRuntime, textGenre,
         textDirector, textWriters, textActors, textPlot, textLanguage, textCountry, textAwards, textMetascore,
-            textImdbId, textImdbRating, textImdbVotes, textType, textDvd, textboxOffice, textproduction, textwebsite,
-            textTotalseasons;
+            textImdbId, textImdbRating, textImdbVotes, textType, textDvd, textboxOffice, textproduction, textwebsite
+            /*textTotalseasons*/ ;
 
     //private ImageView imagePoster;
     SensorManager sensorManager;
@@ -190,7 +190,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
             String boxOffice= jsonObject.getString("BoxOffice") ;
             String production= jsonObject.getString("Production") ;
             String website= jsonObject.getString("Website") ;
-            String totalseasons = jsonObject.getString("totalSeasons");
+           // String totalseasons = jsonObject.getString("totalSeasons");
 
             // Obtem o JSONArray das notas
             JSONArray itemsArray = jsonObject.getJSONArray("Ratings");
@@ -242,7 +242,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
                 textboxOffice.setText("BoxOffice: " + boxOffice);
                 textproduction.setText("Production: " + production);
                 textwebsite.setText("Website: " + website);
-                textTotalseasons.setText("Total Seasons: " + totalseasons);
+
 
             } else {
                 // If none are found, update the UI to show failed results.
@@ -270,7 +270,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
                 textboxOffice.setText(R.string.str_empty) ;
                 textproduction.setText(R.string.str_empty) ;
                 textwebsite.setText(R.string.str_empty) ;
-                textTotalseasons.setText(R.string.str_empty);
+               // textTotalseasons.setText(R.string.str_empty);
             }
         } catch (Exception e) {
             // Se não receber um JSOn válido, informa ao usuário
@@ -298,7 +298,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
             textboxOffice.setText(R.string.str_empty) ;
             textproduction.setText(R.string.str_empty) ;
             textwebsite.setText(R.string.str_empty) ;
-            textTotalseasons.setText(R.string.str_empty);
+           // textTotalseasons.setText(R.string.str_empty);
             e.printStackTrace();
         }
     }
@@ -334,7 +334,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
         textboxOffice = findViewById(R.id.txt_boxoffice);
         textproduction = findViewById(R.id.txt_production);
         textwebsite = findViewById(R.id.txt_website);
-        textTotalseasons = findViewById(R.id.txt_totalseasons);
+       // textTotalseasons = findViewById(R.id.txt_totalseasons);
 
     }
 }
