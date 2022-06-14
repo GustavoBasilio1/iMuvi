@@ -13,10 +13,11 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/widgettext"
-            android:textSize="50dp"
             android:layout_gravity="center"
-        />
+            android:background="@color/vinho"
+            android:text="@string/widgettext"
+            android:textColor="@color/white"
+            android:textSize="50dp" />
 
     </LinearLayout>
 
