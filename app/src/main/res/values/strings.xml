@@ -16,9 +16,8 @@
     <string name="loading">Carregando…</string>
     <string name="wellcome">Welcome to iMuvi!!</string>
     <string name="bannerhome">Banner of the Home</string>
-
+    <string name="bannerseacrh">Banner of the Search</string>
     <string name="no_results">"Nenhum resultado encontrado"</string>
-
     <string name="no_search_term">Informe um termo de busca</string>
 
     <string name="no_network">verifique sua conexão.</string>

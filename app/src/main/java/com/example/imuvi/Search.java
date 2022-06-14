@@ -30,22 +30,11 @@ import org.json.JSONObject;
 
 public class Search extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
     private EditText editSearch;
-    private TextView textTitulo;
-    private TextView textYear;
+    private TextView textTitulo, textYear, textSource, textValue, textRated, textReleased, textRuntime, textGenre,
+        textDirector, textWriters, textActors, textPlot, textLanguage, textCountry, textAwards, textMetascore,
+            textImdbId, textImdbRating, textImdbVotes, textType, textDvd, textboxOffice, textproduction, textwebsite;
+
     //private ImageView imagePoster;
-    private TextView textSource;
-    private TextView textValue;
-    private TextView textRated;
-    private TextView textReleased;
-    private TextView textRuntime;
-    private TextView textGenre;
-    private TextView textDirector;
-    private TextView textWriters;
-    private TextView textActors;
-    private TextView textPlot;
-    private TextView textLanguage;
-    private TextView textCountry;
-    private TextView textAwards;
     SensorManager sensorManager;
     Sensor sensor;
     SensorEventListener sensorEventListener;
@@ -191,6 +180,15 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
             String language = jsonObject.getString("Language");
             String country = jsonObject.getString("Country");
             String awards = jsonObject.getString("Awards");
+            String metascore = jsonObject.getString("Metascore") ;
+            String imdbId = jsonObject.getString("imdbID") ;
+            String imdbRating= jsonObject.getString("imdbRating") ;
+            String imdbVotes= jsonObject.getString("imdbVotes") ;
+            String type= jsonObject.getString("Type") ;
+            String dvd= jsonObject.getString("DVD") ;
+            String boxOffice= jsonObject.getString("BoxOffice") ;
+            String production= jsonObject.getString("Production") ;
+            String website= jsonObject.getString("Website") ;
 
             // Obtem o JSONArray das notas
             JSONArray itemsArray = jsonObject.getJSONArray("Ratings");
@@ -218,12 +216,14 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
                 && rated != null && released != null && runtime != null && genre != null
                 && director != null && writers != null && actors != null && plot != null
                 && language != null && country != null && awards != null && source != null
-                && value != null
+                && value != null && metascore != null && imdbId != null && imdbRating != null
+                && imdbVotes != null && type != null && dvd != null && boxOffice != null
+                && production != null && website != null
             ) {
                 textTitulo.setText("Title: " + titulo);
                 textYear.setText("Year: " + ano);
                 //imagePoster.setImageURI(Uri.parse(poster));
-                textSource.setText("Source: "+ source);
+                textSource.setText("Source: " + source);
                 textValue.setText("Value: " + value);
                 textRated.setText("Rated: " + rated);
                 textReleased.setText("Released: " + released);
@@ -237,6 +237,15 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
                 textCountry.setText("Country: " + country);
                 textAwards.setText("Awards: " + awards);
 
+                textMetascore.setText("Metascore: " + metascore);
+                textImdbId.setText("Imdb ID: " + imdbId);
+                textImdbRating.setText("Imdb Rating: " + imdbRating);
+                textImdbVotes.setText("Imdb Votes: " + imdbVotes);
+                textType.setText("Type: " + type);
+                textDvd.setText("DVD: " + dvd);
+                textboxOffice.setText("BoxOffice: " + boxOffice);
+                textproduction.setText("Production: " + production);
+                textwebsite.setText("Website: " + website);
 
             } else {
                 // If none are found, update the UI to show failed results.
@@ -255,6 +264,15 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
                 textLanguage.setText(R.string.str_empty);
                 textCountry.setText(R.string.str_empty);
                 textAwards.setText(R.string.str_empty);
+                textMetascore.setText(R.string.str_empty) ;
+                textImdbId.setText(R.string.str_empty) ;
+                textImdbRating.setText(R.string.str_empty) ;
+                textImdbVotes.setText(R.string.str_empty) ;
+                textType.setText(R.string.str_empty) ;
+                textDvd.setText(R.string.str_empty) ;
+                textboxOffice.setText(R.string.str_empty) ;
+                textproduction.setText(R.string.str_empty) ;
+                textwebsite.setText(R.string.str_empty) ;
             }
         } catch (Exception e) {
             // Se não receber um JSOn válido, informa ao usuário
@@ -273,6 +291,15 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
             textLanguage.setText(R.string.str_empty);
             textCountry.setText(R.string.str_empty);
             textAwards.setText(R.string.str_empty);
+            textMetascore.setText(R.string.str_empty) ;
+            textImdbId.setText(R.string.str_empty) ;
+            textImdbRating.setText(R.string.str_empty) ;
+            textImdbVotes.setText(R.string.str_empty) ;
+            textType.setText(R.string.str_empty) ;
+            textDvd.setText(R.string.str_empty) ;
+            textboxOffice.setText(R.string.str_empty) ;
+            textproduction.setText(R.string.str_empty) ;
+            textwebsite.setText(R.string.str_empty) ;
             e.printStackTrace();
         }
     }
@@ -299,6 +326,15 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
         textLanguage = findViewById(R.id.txt_language);
         textCountry = findViewById(R.id.txt_country);
         textAwards = findViewById(R.id.txt_awards);
+        textMetascore = findViewById(R.id.txt_metascore);
+        textImdbId = findViewById(R.id.txt_imdbid);
+        textImdbRating = findViewById(R.id.txt_imdbrating);
+        textImdbVotes = findViewById(R.id.txt_imdbvotes);
+        textType = findViewById(R.id.txt_type);
+        textDvd = findViewById(R.id.txt_dvd);
+        textboxOffice = findViewById(R.id.txt_boxoffice);
+        textproduction = findViewById(R.id.txt_production);
+        textwebsite = findViewById(R.id.txt_website);
 
 
     }

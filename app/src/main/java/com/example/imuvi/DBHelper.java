@@ -115,7 +115,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        String sql_atualiza_movie = "DROP TABLE if EXISTS ";
+
     }
 
 
