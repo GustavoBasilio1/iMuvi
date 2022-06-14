@@ -41,6 +41,8 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
     int mov = 0;
     Vibrator vibrar;
 
+    Movie movie = new Movie();
+    DBHelper db = new DBHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -212,14 +214,10 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
                 i++;
             }
             //mostra o resultado qdo possivel.
-            if (titulo != null && ano != null && source != null && value != null
-                && rated != null && released != null && runtime != null && genre != null
-                && director != null && writers != null && actors != null && plot != null
-                && language != null && country != null && awards != null && source != null
-                && value != null && metascore != null && imdbId != null && imdbRating != null
-                && imdbVotes != null && type != null && dvd != null && boxOffice != null
-                && production != null && website != null
-            ) {
+            if (titulo != null && ano != null)
+            {
+                movie.setImdbId(imdbId);
+
                 textTitulo.setText("Title: " + titulo);
                 textYear.setText("Year: " + ano);
                 //imagePoster.setImageURI(Uri.parse(poster));

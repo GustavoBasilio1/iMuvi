@@ -1,6 +1,8 @@
 package com.example.imuvi;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -115,6 +117,52 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+
+    }
+
+    public String addLivro(Movie movie){
+        long resultado;
+        //estancia para escrita no banco
+        SQLiteDatabase db=this.getWritableDatabase();
+
+        ContentValues values= new ContentValues();
+        values.put(COLUMN_ID_IMDB, movie.getImdbId());
+        values.put(COLUMN_TITLE, movie.getTitle());
+
+
+        //inseri no banco
+        resultado = db.insert(MOVIE_TABLE_NAME, null, values);
+        db.close();
+
+        if (resultado ==-1) {
+            return "Erro ao inserir registro";
+        }else{
+            return "Registro Inserido com sucesso";
+        }
+    }
+
+    Movie buscaLivro(String id){
+        SQLiteDatabase db=this.getReadableDatabase();
+
+        Cursor cursor=db.query(MOVIE_TABLE_NAME,
+                new String[]{COLUMN_ID_IMDB, COLUMN_TITLE},
+                COLUMN_ID_IMDB+"=?",new String[]{String.valueOf(id)},null, null, null,null);
+        if(cursor!=null && cursor.getCount()>0){
+            cursor.moveToFirst();
+        }
+
+        else if(cursor.getCount() == 0){
+            Movie filmeEspecifico = new Movie(
+                    "naoExiste",
+                    "naoExiste");
+            return filmeEspecifico;
+        }
+
+
+        Movie filmeEspecifico= new Movie(
+                cursor.getString(0),
+                cursor.getString(1));
+        return filmeEspecifico;
 
     }
 
