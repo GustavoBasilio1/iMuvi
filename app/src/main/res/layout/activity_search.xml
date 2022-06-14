@@ -353,6 +353,15 @@
                     android:layout_weight="1"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txt_totalseasons"
+                    android:layout_width="0dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
