@@ -36,12 +36,12 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
             /*textTotalseasons*/ ;
 
     //private ImageView imagePoster;
-    SensorManager sensorManager;
+   /* SensorManager sensorManager;
     Sensor sensor;
     SensorEventListener sensorEventListener;
     int mov = 0;
     Vibrator vibrar;
-
+        */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,12 +49,12 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
         getSupportActionBar().hide();
 
         //adicionando o sensor
-        sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        if(sensor == null)
-            finish();
-        vibrar = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        sensorEventListener = new SensorEventListener(){
+        //sensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+        //sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        //if(sensor == null)
+         //   finish();
+        //vibrar = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+       /* sensorEventListener = new SensorEventListener(){
             @Override
             public void onSensorChanged(SensorEvent sensorevent) {
                 float x = sensorevent.values[0];
@@ -87,7 +87,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
 
         };
         Start();
-
+            */
         FindComponents();
 
         if (getSupportLoaderManager().getLoader(0) != null) {
@@ -95,7 +95,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
         }
     }
 
-    //MÉTODOS DO ACELEROMETRO
+    /*/MÉTODOS DO ACELEROMETRO
     private void Start() {
         sensorManager.registerListener(sensorEventListener,sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
@@ -113,7 +113,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
         super.onResume();
         Start();
     }
-
+    */
     public void buscaLivros(View view) {
         // Recupera a string de busca.
         String queryString = editSearch.getText().toString();
@@ -242,6 +242,7 @@ public class Search extends AppCompatActivity implements LoaderManager.LoaderCal
                 textboxOffice.setText("BoxOffice: " + boxOffice);
                 textproduction.setText("Production: " + production);
                 textwebsite.setText("Website: " + website);
+
 
 
             } else {

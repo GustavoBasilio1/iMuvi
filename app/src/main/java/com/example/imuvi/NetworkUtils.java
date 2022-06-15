@@ -19,7 +19,7 @@ public class NetworkUtils {
 
 
 
-   // private static final String TIPO_FILME = "type";
+   private static final String TIPO_FILME = "type";
 
     static String buscaInfosFilme(String queryString) {
         HttpURLConnection urlConnection = null;
@@ -29,7 +29,7 @@ public class NetworkUtils {
             // Construção da URI de Busca
             Uri builtURI = Uri.parse(FILMES_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, queryString)
-                    //.appendQueryParameter(TIPO_FILME, "movie")
+                    .appendQueryParameter(TIPO_FILME, "movie")
                     .build();
             // Converte a URI para a URL.
             URL requestURL = new URL(builtURI.toString());
