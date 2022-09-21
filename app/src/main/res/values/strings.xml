@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">iMuvi</string>
+    <string name="button_search">Search</string>
+    <string name="button_luck">Luck</string>
+    <string name="button_map">Map</string>
+    <string name="button_bests">Bests</string>
+    <string name="logo">logo</string>
+    <string name="txt_search">Search Movie</string>
+    <string name="txt_bests">Bests Movies</string>
+    <string name="txt_map">Map</string>
+    <string name="txt_luck">Luck</string>
+    <string name="scroll">ScrollSearch</string>
+    <string name="searchview">Search a movie</string>
+    <string name="searchtext">Please, search a movie</string>
+    <string name="searchbutton">Search</string>
+    <string name="loading">Carregando…</string>
+    <string name="wellcome">Welcome to iMuvi!!</string>
+    <string name="bannerhome">Banner of the Home</string>
+    <string name="bannerseacrh">Banner of the Search</string>
+    <string name="no_results">"Nenhum resultado encontrado"</string>
+    <string name="no_search_term">Informe um termo de busca</string>
+
+    <string name="no_network">verifique sua conexão.</string>
+    <string name="str_empty">" "</string>
+
+    <!-- Tela de endereço -->
+    <string name="textend">Click the button below to view your current location</string>
+    <string name="btnbuscar">LOOK</string>
+    <string name="contentbuscar">YOUR LOCALIZATION</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
+    <!--WIDGET-->
+    <string name="widgettext">iMuvi search screen</string>
+
+
+    <!--Login-->
+    <string name="txtbox_usuario">Usuário</string>
+    <string name="txtbox_senha">Senha</string>
+
+
+    <!--Main2Activity-->
+    <string name="button_admin">Adminstrador</string>
+    <string name="senha">Senha</string>
+    <string name="usuario">Usuário</string>
+    <string name="retangulo_branco">retangulo branco</string>
+    <string name="login">LOGIN</string>
+    <string name="banner">banner</string>
+    <string name="cortina">cortina</string>
+    <string name="entrar">entrar</string>
+
+    <!--Maind_adm-->
+    <string name="button_alterar">Alterar</string>
+    <string name="button_excluir">Excluir</string>
+    <string name="button_insert">Insert</string>
+
+    <string name="servico_indisponivel">Serviço Indisponivel</string>
+    <string name="coordenada_invalida">Coordenada Inválida</string>
+    <string name="sem_endereco">Sem Endereço</string>
+
+
+</resources>
